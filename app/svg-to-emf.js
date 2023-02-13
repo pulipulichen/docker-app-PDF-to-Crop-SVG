@@ -54,7 +54,7 @@ let main = async function () {
     // await ShellExec(`inkscape --batch-process --actions="export-area-drawing;export-filename:tmp-trim-b.svg;export-do;" "${tmpFile}"`)
 
     // await ShellExec(`inkscape --file "${tmpFile}" --export-emf "${emfFile}"`)
-    await ShellExec(`inkscape --without-gui --export-emf ${dirname}/tmp-trim.emf ${dirname}/tmp-trim-b.svg`)
+    await ShellExec(`inkscape --without-gui --export-emf=${dirname}/tmp-trim.emf ${dirname}/tmp-trim-b.svg`)
 
     await ShellExec(`cp -f "${dirname}/tmp-trim-b.svg" "${dirname}/${filenameNoExt}-trim.svg"`)
     await ShellExec(`cp -f "${dirname}/tmp-trim.emf" "${dirname}/${filenameNoExt}-trim.emf"`)

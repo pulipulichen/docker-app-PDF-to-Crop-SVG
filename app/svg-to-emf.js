@@ -5,7 +5,9 @@ const GetExistedArgv = require('./lib/GetExistedArgv')
 const path = require('path')
 const fs = require('fs')
 
-var $ = require( "jquery" );
+const { JSDOM } = require( "jsdom" );
+const { window } = new JSDOM( "" );
+const $ = require( "jquery" )( window );
 
 // convert a.tif -thumbnail 64x64^ -gravity center -extent 64x64 b.ico
 

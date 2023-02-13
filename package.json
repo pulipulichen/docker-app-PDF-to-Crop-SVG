@@ -1,0 +1,28 @@
+{
+  "name": "docker-app-SVG-to-EMF",
+  "version": "1.0.0",
+  "description": "Trim an image.",
+  "main": "index.js",
+  "scripts": {
+    "start": "/home/pudding/NetBeansProjects/MicroSD-NetBeansProjects/docker-app/docker-app-SVG-to-EMF/test/test20230208-1845.sh",
+    "d0.build": "docker-compose build",
+    "d1.bash": "docker-compose run app bash",
+    "d2.up": "docker-compose up",
+    "update": "node update.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://pulipuli.chen@gmail.com@github.com/pulipulichen/docker-app-SVG-to-EMF.git"
+  },
+  "keywords": [
+    "PWA"
+  ],
+  "author": "Pulipuli Chen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pulipulichen/docker-app-SVG-to-EMF/issues"
+  },
+  "homepage": "https://github.com/pulipulichen/docker-app-SVG-to-EMF#readme",
+  "dependencies": {
+  }
+}

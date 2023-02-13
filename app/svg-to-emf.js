@@ -47,7 +47,7 @@ let main = async function () {
     await ShellExec(`cp -f "${file}" "${tmpFile}"`)
     RemoveSVGBackground(tmpFile)
 
-    await ShellExec(`inkscape --batch-process --actions="fitCanvasToDrawing;export-filename:tmp-trim-b.svg;export-do;" /tmp/tmp-trim.svg`)
+    await ShellExec(`inkscape --batch-process --actions="fitCanvasToDrawing;export-filename:/tmp/tmp-trim-b.svg;export-do;" /tmp/tmp-trim.svg`)
 
     // await ShellExec(`inkscape --verb=FitCanvasToDrawing --verb=FileSave --verb=FileQuit "${tmpFile}"`)
 

@@ -42,22 +42,23 @@ let main = async function () {
       continue
     }
 
-    let tmpFile = `${dirname}/tmp-trim.svg`
-    let emfFile = `${dirname}/tmp-trim.emf`
+    let tmpFile = `/tmp/tmp-trim.svg`
+    // let emfFile = `${dirname}/tmp-trim.emf`
     await ShellExec(`cp -f "${file}" "${tmpFile}"`)
     RemoveSVGBackground(tmpFile)
 
-    await ShellExec(`inkscape --batch-process --actions="fitCanvasToDrawing;export-filename:tmp-trim-b.svg;export-do;" ${dirname}/tmp-trim.svg`)
+    await ShellExec(`inkscape --batch-process --actions="fitCanvasToDrawing;export-filename:tmp-trim-b.svg;export-do;" /tmp/tmp-trim.svg`)
 
     // await ShellExec(`inkscape --verb=FitCanvasToDrawing --verb=FileSave --verb=FileQuit "${tmpFile}"`)
 
     // await ShellExec(`inkscape --batch-process --actions="export-area-drawing;export-filename:tmp-trim-b.svg;export-do;" "${tmpFile}"`)
 
     // await ShellExec(`inkscape --file "${tmpFile}" --export-emf "${emfFile}"`)
-    await ShellExec(`inkscape --without-gui --export-emf=${dirname}/tmp-trim.emf ${dirname}/tmp-trim-b.svg`)
+    await ShellExec(`inkscape --without-gui --export-emf=/tmp/tmp-trim.emf /tmp/tmp-trim-b.svg`)
 
-    await ShellExec(`cp -f "${dirname}/tmp-trim-b.svg" "${dirname}/${filenameNoExt}-trim.svg"`)
-    await ShellExec(`cp -f "${dirname}/tmp-trim.emf" "${dirname}/${filenameNoExt}-trim.emf"`)
+    await ShellExec(`rm -f "/tmp/tmp-trim.svg"`)
+    await ShellExec(`mv "/tmp/tmp-trim-b.svg" "${dirname}/${filenameNoExt}-trim.svg"`)
+    await ShellExec(`mv "/tmp/tmp-trim.emf" "${dirname}/${filenameNoExt}-trim.emf"`)
 
     // await ShellExec(`inkscape --batch-process --actions="export-filename:tmptrimb.emf;export-do;" "${tmpFile}"`)
 

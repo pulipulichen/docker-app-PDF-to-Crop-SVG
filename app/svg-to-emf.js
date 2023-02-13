@@ -22,10 +22,10 @@ let RemoveSVGBackground = function(file) {
   // content = content.slice(0, pos1) + content.slice(pos2 + footer.length)
 
   let xmlObject = $(`<div>` + content + `</div>`)
-  console.log(xmlObject.find('path[fill="#ffffff"][d][fill-rule="evenodd"]:first').length)
+  // console.log(xmlObject.find('path[fill="#ffffff"][d][fill-rule="evenodd"]:first').length)
   xmlObject.find('path[fill="#ffffff"][d][fill-rule="evenodd"]:first').remove()
 
-  console.log(xmlObject.html())
+  // console.log(xmlObject.html())
   fs.writeFileSync(file, xmlObject.html(), 'utf8')
 }
 
@@ -47,7 +47,7 @@ let main = async function () {
     await ShellExec(`cp -f "${file}" "${tmpFile}"`)
     RemoveSVGBackground(tmpFile)
 
-    // await ShellExec(`inkscape --batch-process --actions="FitCanvasToDrawing;export-filename:tmp-trim-b.svg;export-do;" "${tmpFile}"`)
+    await ShellExec(`inkscape --batch-process --actions="FitCanvasToDrawing;export-filename:tmp-trim-b.svg;export-do;" "${tmpFile}"`)
 
     // await ShellExec(`inkscape --file "${tmpFile}" --export-emf "${emfFile}"`)
     // await ShellExec(`convert "${file}" -trim +repage "${path.resolve(dirname, filenameNoExt + '-cropped.' +ext)}"`)

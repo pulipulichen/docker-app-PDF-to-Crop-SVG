@@ -1,6 +1,6 @@
 # FROM ubuntu:20.04
-FROM nanozoo/inkscape:0.91--fe10148
-
+FROM kasmweb/inkscape:1.12.0
+# docker pull kasmweb/inkscape:1.12.0-rolling
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update

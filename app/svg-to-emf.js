@@ -5,18 +5,24 @@ const GetExistedArgv = require('./lib/GetExistedArgv')
 const path = require('path')
 const fs = require('fs')
 
+var $ = require( "jquery" );
+
 // convert a.tif -thumbnail 64x64^ -gravity center -extent 64x64 b.ico
 
 let RemoveSVGBackground = function(file) {
   let content = fs.readFileSync(file, 'utf8')
 
-  let pos1 = content.indexOf(`<path fill="#000000" fill-opacity="0.0" d="`)
-  let footer = `" fill-rule="evenodd"/>`
-  let pos2 = content.indexOf(footer, pos1)
+  // let pos1 = content.indexOf(`<path fill="#000000" d="`)
+  // let footer = `" fill-rule="evenodd"/>`
+  // let pos2 = content.indexOf(footer, pos1)
 
-  console.log(pos1, pos2)
-  content = content.slice(0, pos1) + content.slice(pos2 + footer.length)
-  fs.writeFileSync(file, content, 'utf8')
+  // console.log(pos1, pos2)
+  // content = content.slice(0, pos1) + content.slice(pos2 + footer.length)
+
+  let xmlObject = $(`<div>` + content + `</div>`)
+  xmlObject.find('path[fill="#000000"][d][fill-rule="evenodd"]:first').remove()
+
+  fs.writeFileSync(file, xmlObject.html(), 'utf8')
 }
 
 let main = async function () {

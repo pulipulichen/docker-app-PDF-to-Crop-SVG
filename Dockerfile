@@ -21,6 +21,8 @@ RUN apt-get install -y \
 
 WORKDIR /
 
+RUN npm install -g jquery
+
 # COPY package.json /
 # RUN npm install
 

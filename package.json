@@ -24,5 +24,6 @@
   },
   "homepage": "https://github.com/pulipulichen/docker-app-SVG-to-EMF#readme",
   "dependencies": {
+    "jquery": "3.6.3"
   }
 }

@@ -38,7 +38,7 @@ let main = async function () {
     let dirname = path.dirname(file)
     let filenameNoExt = path.parse(filename).name
     let ext = path.extname(filename)
-    if (ext !== '.svg') {
+    if (ext !== '.svg' || filename.endsWith('-trim.svg')) {
       continue
     }
 

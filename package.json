@@ -4,7 +4,7 @@
   "description": "Trim an image.",
   "main": "index.js",
   "scripts": {
-    "start": "/home/pudding/NetBeansProjects/MicroSD-NetBeansProjects/docker-app/docker-app-SVG-to-EMF/test/test20230208-1845.sh",
+    "start": "git add .; git commit -m \"ok\"; git push; /home/pudding/NetBeansProjects/MicroSD-NetBeansProjects/docker-app/docker-app-SVG-to-EMF/test/test20230208-1845.sh",
     "d0.build": "docker-compose build",
     "d1.bash": "docker-compose run app bash",
     "d2.up": "docker-compose up",

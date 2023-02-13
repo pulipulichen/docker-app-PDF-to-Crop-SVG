@@ -31,12 +31,12 @@ let main = async function () {
       continue
     }
 
-    let tmpFile = `${dirname}/${filenameNoExt}-trim.svg`
-    let emfFile = `${dirname}/${filenameNoExt}-trim.emf`
+    let tmpFile = `${dirname}/tmp-trim.svg`
+    let emfFile = `${dirname}/tmp-trim.emf`
     await ShellExec(`cp -f "${file}" "${tmpFile}"`)
     RemoveSVGBackground(tmpFile)
 
-    await ShellExec(`inkscape --batch-process --actions="FitCanvasToDrawing;export-filename:'${filenameNoExt}-trim.svg';export-do;" "${tmpFile}"`)
+    await ShellExec(`inkscape --batch-process --actions="FitCanvasToDrawing;export-filename:tmp-trim.svg;export-do;" "${tmpFile}"`)
 
     // await ShellExec(`inkscape --file "${tmpFile}" --export-emf "${emfFile}"`)
     // await ShellExec(`convert "${file}" -trim +repage "${path.resolve(dirname, filenameNoExt + '-cropped.' +ext)}"`)

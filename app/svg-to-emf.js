@@ -7,6 +7,17 @@ const fs = require('fs')
 
 // convert a.tif -thumbnail 64x64^ -gravity center -extent 64x64 b.ico
 
+let RemoveSVGBackground = function(file) {
+  let content = fs.readFileSync(file, 'utf8')
+
+  let pos1 = content.indexOf(`<path fill="#000000" fill-opacity="0.0" d="`)
+  let footer = `" fill-rule="evenodd"/>`
+  let pos2 = content.indexOf(footer, pos1)
+
+  content = content.slice(0, pos1) + content.slice(pos2 + footer.length)
+  fs.writeFileSync(file, content, 'utf8')
+}
+
 let main = async function () {
   let files = GetExistedArgv()
   for (let i = 0; i < files.length; i++) {
@@ -20,8 +31,14 @@ let main = async function () {
       continue
     }
 
-    
+    let tmpFile = `${dirname}/${filenameNoExt}-trim.svg`
+    let emfFile = `${dirname}/${filenameNoExt}-trim.emf`
+    await ShellExec(`cp "${file}" "${tmpFile}"`)
+    RemoveSVGBackground(tmpFile)
 
+    await ShellExec(`inkscape --verb=FitCanvasToDrawing --verb=FileSave --verb=FileClose "${tmpFile}"`)
+
+    await ShellExec(`inkscape --file "${tmpFile}" --export-emf "${emfFile}"`)
     // await ShellExec(`convert "${file}" -trim +repage "${path.resolve(dirname, filenameNoExt + '-cropped.' +ext)}"`)
     // await ShellExec(`convert "${file}" -transparent white -trim +repage "${path.resolve(dirname, filenameNoExt + '-cropped.' +ext)}"`)
     // await ShellExec(`convert "${file}"  -alpha set -bordercolor white -border 1 -fill none -fuzz 3% -draw "color 0,0 floodfill" -shave 1x1 -trim +repage "${path.resolve(dirname, filenameNoExt + '-cropped' +ext)}"`)
@@ -29,7 +46,7 @@ let main = async function () {
 
     // console.log(file)
 
-    await ShellExec(`inkscape --verb=FitCanvasToDrawing --verb=FileSave --verb=FileClose "${file}"`)
+    
   }
 }
 

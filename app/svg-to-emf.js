@@ -49,13 +49,13 @@ let main = async function () {
 
     // await ShellExec(`inkscape --batch-process --actions="fitCanvasToDrawing;export-filename:tmp-trim-b.svg;export-do;" "${tmpFile}"`)
 
-    // await ShellExec(`inkscape --verb=FitCanvasToDrawing --verb=FileSave --verb=FileQuit "${tmpFile}"`)
+    await ShellExec(`inkscape --verb=FitCanvasToDrawing --verb=FileSave --verb=FileQuit "${tmpFile}"`)
 
     // await ShellExec(`inkscape --batch-process --actions="export-area-drawing;export-filename:tmp-trim-b.svg;export-do;" "${tmpFile}"`)
 
     // await ShellExec(`inkscape --file "${tmpFile}" --export-emf "${emfFile}"`)
 
-    await ShellExec(`inkscape --actions="export-filename:tmptrimb.emf;export-do;" "${tmpFile}"`)
+    // await ShellExec(`inkscape --batch-process --actions="export-filename:tmptrimb.emf;export-do;" "${tmpFile}"`)
 
     // await ShellExec(`convert "${file}" -trim +repage "${path.resolve(dirname, filenameNoExt + '-cropped.' +ext)}"`)
     // await ShellExec(`convert "${file}" -transparent white -trim +repage "${path.resolve(dirname, filenameNoExt + '-cropped.' +ext)}"`)

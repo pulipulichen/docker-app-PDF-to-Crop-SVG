@@ -14,6 +14,7 @@ let RemoveSVGBackground = function(file) {
   let footer = `" fill-rule="evenodd"/>`
   let pos2 = content.indexOf(footer, pos1)
 
+  console.log(pos1, pos2)
   content = content.slice(0, pos1) + content.slice(pos2 + footer.length)
   fs.writeFileSync(file, content, 'utf8')
 }

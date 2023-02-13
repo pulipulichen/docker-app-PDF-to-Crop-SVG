@@ -1,4 +1,5 @@
-FROM ubuntu:20.04
+# FROM ubuntu:20.04
+FROM nanozoo/inkscape:0.91--fe10148
 
 ENV DEBIAN_FRONTEND=noninteractive
 

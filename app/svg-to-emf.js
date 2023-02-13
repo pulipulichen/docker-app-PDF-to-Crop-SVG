@@ -22,8 +22,10 @@ let RemoveSVGBackground = function(file) {
   // content = content.slice(0, pos1) + content.slice(pos2 + footer.length)
 
   let xmlObject = $(`<div>` + content + `</div>`)
+  console.log(xmlObject.find('path[fill="#000000"][d][fill-rule="evenodd"]:first').length)
   xmlObject.find('path[fill="#000000"][d][fill-rule="evenodd"]:first').remove()
 
+  console.log(xmlObject.html())
   fs.writeFileSync(file, xmlObject.html(), 'utf8')
 }
 

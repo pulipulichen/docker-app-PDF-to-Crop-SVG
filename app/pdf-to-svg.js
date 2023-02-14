@@ -80,10 +80,12 @@ let main = async function () {
 
     RemoveSVGBackground(cropSVGfile)
     await ShellExec(`rm -f "${cropPDFfile}"`)
-    
+
     let cropPNGfile = dirname + '/' + filenameNoExt + '-crop.png'
     await ShellExec(`inkscape --export-png="${cropPNGfile}" "${cropSVGfile}" --export-dpi=300`)
 
+    let cropEMFfile = dirname + '/' + filenameNoExt + '-crop.emf'
+    await ShellExec(`inkscape --export-emf="${cropEMFfile}" "${cropSVGfile}"`)
   }
 }
 

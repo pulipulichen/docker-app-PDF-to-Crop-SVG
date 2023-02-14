@@ -24,7 +24,7 @@ let RemoveSVGBackground = function(file) {
   let xmlObject = $(`<div>` + content + `</div>`)
   // console.log(xmlObject.find('path[fill="#ffffff"][d][fill-rule="evenodd"]:first').length)
   // xmlObject.find('path[fill="#ffffff"][d][fill-rule="evenodd"]:first').remove()
-  // xmlObject.find('path[fill="#ffffff"][d][fill-rule="evenodd"]:first').remove()
+  xmlObject.find('rect[style="fill:#ffffff;fill-opacity:1;stroke:none"]:first').remove()
 
   // console.log(xmlObject.html())
   fs.writeFileSync(file, xmlObject.html(), 'utf8')
@@ -78,7 +78,8 @@ let main = async function () {
     console.log(`inkscape --pdf-poppler --pdf-page=1 --export-type=svg --export-text-to-path --export-area-drawing --export-filename "${cropSVGfile}" "${cropPDFfile}"`)
     await ShellExec(`inkscape --pdf-poppler --pdf-page=1 --export-type=svg --export-text-to-path --export-area-drawing --export-filename "${cropSVGfile}" "${cropPDFfile}"`)
 
-    // RemoveSVGBackground(cropSVGfile)
+    RemoveSVGBackground(cropSVGfile)
+    await ShellExec(`rm -f "${cropPDFfile}"`)
   }
 }
 

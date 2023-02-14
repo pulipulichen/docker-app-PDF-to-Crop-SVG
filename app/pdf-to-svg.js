@@ -43,39 +43,11 @@ let main = async function () {
       continue
     }
 
-    // let tmpFile = `/tmp/tmp-trim.svg`
-    // // let emfFile = `${dirname}/tmp-trim.emf`
-    // await ShellExec(`cp -f "${file}" "${tmpFile}"`)
-    // RemoveSVGBackground(tmpFile)
-
-    // await ShellExec(`inkscape --batch-process --actions="FitCanvasToDrawing;export-filename:/tmp/tmp-trim-b.svg;export-do;" /tmp/tmp-trim.svg`)
-
-    // await ShellExec(`inkscape --verb=FitCanvasToDrawing --verb=FileSave --verb=FileQuit "${tmpFile}"`)
-
-    // await ShellExec(`inkscape --batch-process --actions="export-area-drawing;export-filename:tmp-trim-b.svg;export-do;" "${tmpFile}"`)
-
-    // await ShellExec(`inkscape --file "${tmpFile}" --export-emf "${emfFile}"`)
-    // await ShellExec(`inkscape --without-gui --export-emf=/tmp/tmp-trim.emf /tmp/tmp-trim-b.svg`)
-
-    // await ShellExec(`rm -f "/tmp/tmp-trim.svg"`)
-    // await ShellExec(`mv "/tmp/tmp-trim-b.svg" "${dirname}/${filenameNoExt}-trim.svg"`)
-    // await ShellExec(`mv "/tmp/tmp-trim.emf" "${dirname}/${filenameNoExt}-trim.emf"`)
-
-    // await ShellExec(`inkscape --batch-process --actions="export-filename:tmptrimb.emf;export-do;" "${tmpFile}"`)
-
-    // await ShellExec(`convert "${file}" -trim +repage "${path.resolve(dirname, filenameNoExt + '-cropped.' +ext)}"`)
-    // await ShellExec(`convert "${file}" -transparent white -trim +repage "${path.resolve(dirname, filenameNoExt + '-cropped.' +ext)}"`)
-    // await ShellExec(`convert "${file}"  -alpha set -bordercolor white -border 1 -fill none -fuzz 3% -draw "color 0,0 floodfill" -shave 1x1 -trim +repage "${path.resolve(dirname, filenameNoExt + '-cropped' +ext)}"`)
-    // convert -gravity center "c.png" -flatten -fuzz 1% -trim +repage -resize 64x64 -extent 64x64 "b.ico"
-
-    // console.log(file)
 
     let cropPDFfile = dirname + '/' + filenameNoExt + '-crop.pdf'
-    // console.log(`pdfcrop "${file}" "${cropPDFfile}"`)
     await ShellExec(`pdfcrop "${file}" "${cropPDFfile}"`)
 
     let cropSVGfile = dirname + '/' + filenameNoExt + '-crop.svg'
-    // console.log(`inkscape --pdf-poppler --pdf-page=1 --export-type=svg --export-text-to-path --export-area-drawing --export-filename "${cropSVGfile}" "${cropPDFfile}"`)
     await ShellExec(`inkscape --pdf-poppler --pdf-page=1 --export-type=svg --export-text-to-path --export-area-drawing --export-filename "${cropSVGfile}" "${cropPDFfile}"`)
 
     RemoveSVGBackground(cropSVGfile)

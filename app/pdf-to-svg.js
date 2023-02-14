@@ -71,8 +71,8 @@ let main = async function () {
     // console.log(file)
 
     let cropPDFfile = dirname + '/' + filenameNoExt + '-crop.pdf'
-    console.log(`pdfcrop "${filename}" "${cropPDFfile}"`)
-    await ShellExec(`pdfcrop "${filename}" "${cropPDFfile}"`)
+    console.log(`pdfcrop "${file}" "${cropPDFfile}"`)
+    await ShellExec(`pdfcrop "${file}" "${cropPDFfile}"`)
 
     let cropSVGfile = dirname + '/' + filenameNoExt + '-crop.svg'
     console.log(`inkscape --pdf-poppler --pdf-page=1 --export-type=svg --export-text-to-path --export-area-drawing --export-filename "${cropSVGfile}" "${cropPDFfile}"`)

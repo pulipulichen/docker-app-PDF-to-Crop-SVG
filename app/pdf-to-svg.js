@@ -23,7 +23,8 @@ let RemoveSVGBackground = function(file) {
 
   let xmlObject = $(`<div>` + content + `</div>`)
   // console.log(xmlObject.find('path[fill="#ffffff"][d][fill-rule="evenodd"]:first').length)
-  xmlObject.find('path[fill="#ffffff"][d][fill-rule="evenodd"]:first').remove()
+  // xmlObject.find('path[fill="#ffffff"][d][fill-rule="evenodd"]:first').remove()
+  // xmlObject.find('path[fill="#ffffff"][d][fill-rule="evenodd"]:first').remove()
 
   // console.log(xmlObject.html())
   fs.writeFileSync(file, xmlObject.html(), 'utf8')
@@ -38,27 +39,27 @@ let main = async function () {
     let dirname = path.dirname(file)
     let filenameNoExt = path.parse(filename).name
     let ext = path.extname(filename)
-    if (ext !== '.svg' || filename.endsWith('-trim.svg')) {
+    if (ext !== '.pdf') {
       continue
     }
 
-    let tmpFile = `/tmp/tmp-trim.svg`
-    // let emfFile = `${dirname}/tmp-trim.emf`
-    await ShellExec(`cp -f "${file}" "${tmpFile}"`)
-    RemoveSVGBackground(tmpFile)
+    // let tmpFile = `/tmp/tmp-trim.svg`
+    // // let emfFile = `${dirname}/tmp-trim.emf`
+    // await ShellExec(`cp -f "${file}" "${tmpFile}"`)
+    // RemoveSVGBackground(tmpFile)
 
-    await ShellExec(`inkscape --batch-process --actions="FitCanvasToDrawing;export-filename:/tmp/tmp-trim-b.svg;export-do;" /tmp/tmp-trim.svg`)
+    // await ShellExec(`inkscape --batch-process --actions="FitCanvasToDrawing;export-filename:/tmp/tmp-trim-b.svg;export-do;" /tmp/tmp-trim.svg`)
 
     // await ShellExec(`inkscape --verb=FitCanvasToDrawing --verb=FileSave --verb=FileQuit "${tmpFile}"`)
 
     // await ShellExec(`inkscape --batch-process --actions="export-area-drawing;export-filename:tmp-trim-b.svg;export-do;" "${tmpFile}"`)
 
     // await ShellExec(`inkscape --file "${tmpFile}" --export-emf "${emfFile}"`)
-    await ShellExec(`inkscape --without-gui --export-emf=/tmp/tmp-trim.emf /tmp/tmp-trim-b.svg`)
+    // await ShellExec(`inkscape --without-gui --export-emf=/tmp/tmp-trim.emf /tmp/tmp-trim-b.svg`)
 
-    await ShellExec(`rm -f "/tmp/tmp-trim.svg"`)
-    await ShellExec(`mv "/tmp/tmp-trim-b.svg" "${dirname}/${filenameNoExt}-trim.svg"`)
-    await ShellExec(`mv "/tmp/tmp-trim.emf" "${dirname}/${filenameNoExt}-trim.emf"`)
+    // await ShellExec(`rm -f "/tmp/tmp-trim.svg"`)
+    // await ShellExec(`mv "/tmp/tmp-trim-b.svg" "${dirname}/${filenameNoExt}-trim.svg"`)
+    // await ShellExec(`mv "/tmp/tmp-trim.emf" "${dirname}/${filenameNoExt}-trim.emf"`)
 
     // await ShellExec(`inkscape --batch-process --actions="export-filename:tmptrimb.emf;export-do;" "${tmpFile}"`)
 
@@ -69,7 +70,13 @@ let main = async function () {
 
     // console.log(file)
 
-    
+    let cropPDFfile = dirname + '/' + filenameNoExt + '-crop.pdf'
+    await ShellExec(`pdfcrop "${filename}" "${cropPDFfile}"`)
+
+    let cropSVGfile = dirname + '/' + filenameNoExt + '-crop.svg'
+    await ShellExec(` inkscape --pdf-poppler --pdf-page=1 --export-type=svg --export-text-to-path --export-area-drawing --export-filename "${cropSVGfile}" "${cropPDFfile}"`)
+
+    // RemoveSVGBackground(cropSVGfile)
   }
 }
 

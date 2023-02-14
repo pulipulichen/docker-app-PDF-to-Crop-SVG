@@ -3,7 +3,7 @@ services:
   app:
     build: .
     tty: true
-    command: node /app/svg-to-emf.js "/input/[INPUT]"
+    command: node /app/pdf-to-svg.js "/input/[INPUT]"
     volumes: 
       - ./app:/app/
       - ./cache:/cache/

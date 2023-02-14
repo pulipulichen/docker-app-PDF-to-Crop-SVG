@@ -26,5 +26,8 @@ CMD ["bash"]
 COPY package.json /
 RUN npm install
 
+RUN apt-get install -y \
+    texlive-extra-utils
+
 # RUN apt-get install -y wget
 # RUN wget https://dev.w3.org/SVG/tools/svgweb/samples/svg-files/DroidSans.svg

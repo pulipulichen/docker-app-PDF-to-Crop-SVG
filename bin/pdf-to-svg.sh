@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PROJECT_NAME=docker-app-SVG-to-EMF
+PROJECT_NAME=docker-app-PDF-to-Crop-SVG
 
 # -------------------
 # 檢查有沒有參數

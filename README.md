@@ -1,2 +1,2 @@
-# docker-app-SVG-to-EMF
-A docker app to convert SVG to EMF.
+# docker-app-PDF-to-Crop-SVG
+A docker app to convert PDF to a cropped SVG.

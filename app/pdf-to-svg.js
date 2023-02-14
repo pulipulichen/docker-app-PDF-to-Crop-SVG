@@ -78,7 +78,7 @@ let main = async function () {
     console.log(`inkscape --pdf-poppler --pdf-page=1 --export-type=svg --export-text-to-path --export-area-drawing --export-filename "${cropSVGfile}" "${cropPDFfile}"`)
     await ShellExec(`inkscape --pdf-poppler --pdf-page=1 --export-type=svg --export-text-to-path --export-area-drawing --export-filename "${cropSVGfile}" "${cropPDFfile}"`)
 
-    let cropSVGfile = dirname + '/' + filenameNoExt + '-crop.png'
+    let cropPNGfile = dirname + '/' + filenameNoExt + '-crop.png'
     await ShellExec(`inkscape --export-png="${cropPNGfile}" "${cropSVGfile}"`)
 
     RemoveSVGBackground(cropSVGfile)

@@ -71,11 +71,11 @@ let main = async function () {
     // console.log(file)
 
     let cropPDFfile = dirname + '/' + filenameNoExt + '-crop.pdf'
-    console.log(`pdfcrop "${file}" "${cropPDFfile}"`)
+    // console.log(`pdfcrop "${file}" "${cropPDFfile}"`)
     await ShellExec(`pdfcrop "${file}" "${cropPDFfile}"`)
 
     let cropSVGfile = dirname + '/' + filenameNoExt + '-crop.svg'
-    console.log(`inkscape --pdf-poppler --pdf-page=1 --export-type=svg --export-text-to-path --export-area-drawing --export-filename "${cropSVGfile}" "${cropPDFfile}"`)
+    // console.log(`inkscape --pdf-poppler --pdf-page=1 --export-type=svg --export-text-to-path --export-area-drawing --export-filename "${cropSVGfile}" "${cropPDFfile}"`)
     await ShellExec(`inkscape --pdf-poppler --pdf-page=1 --export-type=svg --export-text-to-path --export-area-drawing --export-filename "${cropSVGfile}" "${cropPDFfile}"`)
 
     let cropPNGfile = dirname + '/' + filenameNoExt + '-crop.png'

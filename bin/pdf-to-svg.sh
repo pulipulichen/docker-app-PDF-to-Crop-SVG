@@ -3,6 +3,15 @@
 PROJECT_NAME=docker-app-PDF-to-Crop-SVG
 
 # -------------------
+
+if [ -z "$DOCKER_HOST" ]; then
+    echo "DOCKER_HOST is not set, setting it to 'unix:///run/user/1000/docker.sock'"
+    export DOCKER_HOST="unix:///run/user/1000/docker.sock"
+else
+    echo "DOCKER_HOST is set to '$DOCKER_HOST'"
+fi
+
+# -------------------
 # 檢查有沒有參數
 
 var="$1"
@@ -14,7 +23,7 @@ if [ ! -f "$var" ]; then
   var=$(kdialog --getopenfilename --multiple ~/ 'Images')
   var=`echo "${var}" | xargs`
   useParams="false"
-fi
+fi 
 
 # ------------------
 # 確認環境

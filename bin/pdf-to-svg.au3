@@ -2,7 +2,7 @@
 #include <FileConstants.au3>
 
 Global $sPROJECT_NAME = "docker-app-PDF-to-Crop-SVG"
-Global $sFILE_EXT = "Images (*.*)"
+Global $sFILE_EXT = "PDF (*.pdf)"
 
 ;~ MsgBox($MB_SYSTEMMODAL, "Title", "This message box will timeout after 10 seconds or select the OK button.", 10)
 Local $sWorkingDir = @WorkingDir
@@ -40,7 +40,8 @@ EndIf
 
 ;~ ---------------------
 
-Local $sProjectFolder = @TempDir & "\" & $sPROJECT_NAME
+; Local $sProjectFolder = @TempDir & "\" & $sPROJECT_NAME
+Local $sProjectFolder = @HomeDrive & @HomePath & "\docker-app\" & $sPROJECT_NAME
 ;~ MsgBox($MB_SYSTEMMODAL, FileExists($sProjectFolder), $sProjectFolder)
 If Not FileExists($sProjectFolder) Then
 	FileChangeDir(@TempDir)

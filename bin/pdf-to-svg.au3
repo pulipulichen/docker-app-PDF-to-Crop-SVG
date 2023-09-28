@@ -11,28 +11,28 @@ Local $sWorkingDir = @WorkingDir
 
 Local $result = 0
 
-$result = ShellExecuteWait('WHERE', 'git', "", "open", @SW_HIDE)
+$result = ShellExecuteWait('WHERE', 'git', "", "open", @SW_SHOW)
 If $result = 1 then
 	MsgBox($MB_SYSTEMMODAL, "Environment Setting", "Please install GIT.")
-	ShellExecute("https://git-scm.com/downloads", "", "open", @SW_HIDE)
+	ShellExecute("https://git-scm.com/downloads", "", "open", @SW_SHOW)
 	Exit
 EndIf
 
-$result = ShellExecuteWait('WHERE', 'node', "", "open", @SW_HIDE)
+$result = ShellExecuteWait('WHERE', 'node', "", "open", @SW_SHOW)
 If $result = 1 then
 	MsgBox($MB_SYSTEMMODAL, "Environment Setting", "Please install Node.js.")
-	ShellExecute("https://nodejs.org/en/download/", "", "open", @SW_HIDE)
+	ShellExecute("https://nodejs.org/en/download/", "", "open", @SW_SHOW)
 	Exit
 EndIf
 
-$result = ShellExecuteWait('WHERE', 'docker-compose', "", "open", @SW_HIDE)
+$result = ShellExecuteWait('WHERE', 'docker-compose', "", "open", @SW_SHOW)
 If $result = 1 then
 	MsgBox($MB_SYSTEMMODAL, "Environment Setting", "Please install Docker Desktop.")
-	ShellExecute("https://docs.docker.com/compose/install/", "", "open", @SW_HIDE)
+	ShellExecute("https://docs.docker.com/compose/install/", "", "open", @SW_SHOW)
 	Exit
 EndIf
 
-$result = ShellExecuteWait('docker', 'version', "", "open", @SW_HIDE)
+$result = ShellExecuteWait('docker', 'version', "", "open", @SW_SHOW)
 If $result = 1 then
 	MsgBox($MB_SYSTEMMODAL, "Environment Setting", "Please start Docker Desktop.")
 	Exit
@@ -44,13 +44,13 @@ EndIf
 Local $sProjectFolder = @HomeDrive & @HomePath & "\docker-app\" & $sPROJECT_NAME
 ;~ MsgBox($MB_SYSTEMMODAL, FileExists($sProjectFolder), $sProjectFolder)
 If Not FileExists($sProjectFolder) Then
-	FileChangeDir(@TempDir)
+	FileChangeDir(@HomeDrive & @HomePath & "\docker-app\")
 	ShellExecuteWait("git", "clone https://github.com/pulipulichen/" & $sPROJECT_NAME & ".git")
 	FileChangeDir($sProjectFolder)
 Else
 	FileChangeDir($sProjectFolder)
-	ShellExecuteWait("git", "reset --hard", "", "open", @SW_HIDE)
-	ShellExecuteWait("git", "pull --force", "", "open", @SW_HIDE)
+	ShellExecuteWait("git", "reset --hard", "", "open", @SW_SHOW)
+	ShellExecuteWait("git", "pull --force", "", "open", @SW_SHOW)
 EndIf
 
 ;~ ---------------------
@@ -60,13 +60,13 @@ If Not FileExists($sProjectFolderCache) Then
 	DirCreate($sProjectFolderCache)
 EndIf
 
-$result = ShellExecuteWait("fc", '"' & $sProjectFolder & "\Dockerfile" & '" "' & $sProjectFolderCache & "\Dockerfile" & '"', "", "open", @SW_HIDE)
+$result = ShellExecuteWait("fc", '"' & $sProjectFolder & "\Dockerfile" & '" "' & $sProjectFolderCache & "\Dockerfile" & '"', "", "open", @SW_SHOW)
 If $result = 1 then
 	ShellExecuteWait("docker-compose", "build")
 	FileCopy($sProjectFolder & "\Dockerfile", $sProjectFolderCache & "\Dockerfile", $FC_OVERWRITE)
 EndIf
 
-$result = ShellExecuteWait("fc", '"' & $sProjectFolder & "\package.json" & '" "' & $sProjectFolderCache & "\package.json" & '"', "", "open", @SW_HIDE)
+$result = ShellExecuteWait("fc", '"' & $sProjectFolder & "\package.json" & '" "' & $sProjectFolderCache & "\package.json" & '"', "", "open", @SW_SHOW)
 If $result = 1 then
 	ShellExecuteWait("docker-compose", "build")
 EndIf
@@ -92,15 +92,15 @@ If $sUseParams = true Then
 			If Not FileExists($sWorkingDir & "/" & $CmdLine[$i]) Then
 				MsgBox($MB_SYSTEMMODAL, $sPROJECT_NAME, "File not found: " & $CmdLine[$i])
 			Else
-				ShellExecuteWait("node", $sProjectFolder & "\index.js" & ' "' & $sWorkingDir & "/" & $CmdLine[$i] & '"')	
+				ShellExecuteWait("node", $sProjectFolder & "\index.js" & ' "' & $sWorkingDir & "/" & $CmdLine[$i] & '"', @SW_SHOW)	
 			EndIf
 		Else
-			ShellExecuteWait("node", $sProjectFolder & "\index.js" & ' "' & $CmdLine[$i] & '"')
+			ShellExecuteWait("node", $sProjectFolder & "\index.js" & ' "' & $CmdLine[$i] & '"', @SW_SHOW)
 		EndIf
 	Next
 Else
 	For $i = 1 To $sFiles[0]
 		FileChangeDir($sProjectFolder)
-		ShellExecuteWait("node", $sProjectFolder & "\index.js" & ' "' & $sFiles[$i] & '"')
+		ShellExecuteWait("node", $sProjectFolder & "\index.js" & ' "' & $sFiles[$i] & '"', @SW_SHOW)
 	Next
 EndIf

@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "git add .; git commit -m \"ok\"; git push; /home/pudding/NetBeansProjects/MicroSD-NetBeansProjects/docker-app/docker-app-PDF-to-Crop-SVG/test/20230105-2123.sh",
+    "commit-docker-image": "docker-compose build; bash ./docker-build/image/commit-docker-image.sh",
     "d0.build": "docker-compose build",
     "d1.bash": "docker-compose run app bash",
     "d2.up": "docker-compose up",

@@ -47,6 +47,7 @@ let main = async function () {
     let cropPDFfile = dirname + '/' + filenameNoExt + '-crop.pdf'
     await ShellExec(`pdfcrop "${file}" "${cropPDFfile}"`)
 
+    dirname = '/output'
     let cropSVGfile = dirname + '/' + filenameNoExt + '-crop.svg'
     await ShellExec(`inkscape --pdf-poppler --export-page=1 --export-type=svg --export-text-to-path --export-area-drawing --export-filename "${cropSVGfile}" "${cropPDFfile}"`)
 

@@ -8,3 +8,6 @@
 - `docker tag docker-app-pdf-to-crop-svg-app pudding/docker-app:node-20-inkscape-20230922-2210`
 - `docker push pudding/docker-app:node-20-inkscape-20230922-2210`
 - 修改Dockerfile `FROM pudding/docker-app:node-20-inkscape-20230922-2210`
+
+
+- 加入到監控清單 https://github.com/democwise2016/dockerhub-image-refresher/edit/main/docker-image-list.txt

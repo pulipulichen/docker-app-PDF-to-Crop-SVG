@@ -9,4 +9,4 @@ RUN apt-get install -y inkscape
 RUN apt-get install -y \
     imagemagick
 
-RUN npm install link jsdom
+RUN npm link jsdom

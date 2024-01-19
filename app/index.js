@@ -25,6 +25,7 @@ let RemoveSVGBackground = function(file) {
   // console.log(xmlObject.find('path[fill="#ffffff"][d][fill-rule="evenodd"]:first').length)
   // xmlObject.find('path[fill="#ffffff"][d][fill-rule="evenodd"]:first').remove()
   xmlObject.find('rect[style="fill:#ffffff;fill-opacity:1;stroke:none"]:first').remove()
+  xmlObject.find('path[style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"]:first').remove()
 
   // console.log(xmlObject.html())
   fs.writeFileSync(file, xmlObject.html(), 'utf8')
@@ -51,11 +52,11 @@ let main = async function () {
     let cropSVGfile = dirname + '/' + filenameNoExt + '-crop.svg'
     await ShellExec(`inkscape --pdf-poppler --export-page=1 --export-type=svg --export-text-to-path --export-area-drawing --export-filename "${cropSVGfile}" "${cropPDFfile}"`)
 
-    // await ShellExec(`inkscape --pdf-poppler --verb=FitCanvasToDrawing --verb=FileSave --verb=FileQuit --export-page=1 --export-type=svg --export-text-to-path --export-area-drawing --export-filename "${cropSVGfile}" "${cropPDFfile}"`)
+    await ShellExec(`inkscape --pdf-poppler --verb=FitCanvasToDrawing --verb=FileSave --verb=FileQuit --export-page=1 --export-type=svg --export-text-to-path --export-area-drawing --export-filename "${cropSVGfile}" "${cropPDFfile}"`)
     
     RemoveSVGBackground(cropSVGfile)
 
-    await ShellExec(`inkscape -g --verb=FitCanvasToDrawing --verb=FileSave --verb=FileQuit "${cropSVGfile}"`)
+    // await ShellExec(`inkscape -g --verb=FitCanvasToDrawing --verb=FileSave --verb=FileQuit "${cropSVGfile}"`)
 
     await ShellExec(`rm -f "${cropPDFfile}"`)
 

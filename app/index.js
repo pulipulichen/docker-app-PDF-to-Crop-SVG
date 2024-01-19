@@ -58,7 +58,7 @@ let main = async function () {
     
     RemoveSVGBackground(cropSVGfile)
     // await ShellExec(`inkscape -g --verb="FitCanvasToDrawing;FileSave;FileQuit" "${cropSVGfile}"`)
-    await ShellExec(`inkscape --batch-process --verb=FitCanvasToDrawing --verb=FileSave --verb=FileQuit "${cropSVGfile}"`)
+    await ShellExec(`inkscape --actions "select-all;fit-canvas-to-selection;quit" "${cropSVGfile}"`)
 
     // await ShellExec(`inkscape -g --verb=FitCanvasToDrawing --verb=FileSave --verb=FileQuit "${cropSVGfile}"`)
 

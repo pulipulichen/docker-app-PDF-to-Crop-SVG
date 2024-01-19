@@ -51,9 +51,12 @@ let main = async function () {
     let cropSVGfile = dirname + '/' + filenameNoExt + '-crop.svg'
     await ShellExec(`inkscape --pdf-poppler --export-page=1 --export-type=svg --export-text-to-path --export-area-drawing --export-filename "${cropSVGfile}" "${cropPDFfile}"`)
 
-    await ShellExec(`inkscape --pdf-poppler --verb=FitCanvasToDrawing --verb=FileSave --verb=FileQuit --export-page=1 --export-type=svg --export-text-to-path --export-area-drawing --export-filename "${cropSVGfile}" "${cropPDFfile}"`)
+    // await ShellExec(`inkscape --pdf-poppler --verb=FitCanvasToDrawing --verb=FileSave --verb=FileQuit --export-page=1 --export-type=svg --export-text-to-path --export-area-drawing --export-filename "${cropSVGfile}" "${cropPDFfile}"`)
     
     RemoveSVGBackground(cropSVGfile)
+
+    await ShellExec(`inkscape -g --verb="FitCanvasToDrawing;FileSave;FileQuit" "${cropSVGfile}"`)
+
     await ShellExec(`rm -f "${cropPDFfile}"`)
 
     let cropPNGfile = dirname + '/' + filenameNoExt + '-crop.png'

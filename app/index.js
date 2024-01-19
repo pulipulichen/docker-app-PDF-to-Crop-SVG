@@ -51,15 +51,14 @@ let main = async function () {
     await ShellExec(`pdfcrop "${file}" "${cropPDFfile}"`)
 
     dirname = '/output'
-    let cropSVGfile1 = dirname + '/' + filenameNoExt + '-tmp.svg'
-    let cropSVGfile2 = dirname + '/' + filenameNoExt + '-crop.svg'
-    await ShellExec(`inkscape --pdf-poppler --export-page=1 --export-type=svg --export-text-to-path --export-area-drawing --export-filename "${cropSVGfile1}" "${cropPDFfile}"`)
+    let cropSVGfile = dirname + '/' + filenameNoExt + '-crop.svg'
+    await ShellExec(`inkscape --pdf-poppler --export-page=1 --export-type=svg --export-text-to-path --export-area-drawing --export-filename "${cropSVGfile}" "${cropPDFfile}"`)
 
     // await ShellExec(`inkscape --pdf-poppler --verb=FitCanvasToDrawing --verb=FileSave --verb=FileQuit --export-page=1 --export-type=svg --export-text-to-path --export-area-drawing --export-filename "${cropSVGfile}" "${cropPDFfile}"`)
     
-    RemoveSVGBackground(cropSVGfile1)
+    RemoveSVGBackground(cropSVGfile)
     // await ShellExec(`inkscape -g --verb="FitCanvasToDrawing;FileSave;FileQuit" "${cropSVGfile}"`)
-    await ShellExec(`inkscape --actions "select-all;fit-canvas-to-selection;export-do;quit"  "${cropSVGfile1}"`)
+    await ShellExec(`inkscape --actions "select-all;fit-canvas-to-selection;export-do;quit"  "${cropSVGfile}"`)
 
     // await ShellExec(`inkscape -g --verb=FitCanvasToDrawing --verb=FileSave --verb=FileQuit "${cropSVGfile}"`)
 

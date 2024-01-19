@@ -44,6 +44,8 @@ let main = async function () {
       continue
     }
 
+    await ShellExec(`inkscape --version`)
+
 
     let cropPDFfile = dirname + '/' + filenameNoExt + '-crop.pdf'
     await ShellExec(`pdfcrop "${file}" "${cropPDFfile}"`)
@@ -55,6 +57,9 @@ let main = async function () {
     await ShellExec(`inkscape --pdf-poppler --verb=FitCanvasToDrawing --verb=FileSave --verb=FileQuit --export-page=1 --export-type=svg --export-text-to-path --export-area-drawing --export-filename "${cropSVGfile}" "${cropPDFfile}"`)
     
     RemoveSVGBackground(cropSVGfile)
+
+
+    
 
     // await ShellExec(`inkscape -g --verb=FitCanvasToDrawing --verb=FileSave --verb=FileQuit "${cropSVGfile}"`)
 

@@ -9,4 +9,7 @@ RUN apt-get install -y inkscape
 RUN apt-get install -y \
     imagemagick
 
+RUN apt-get install -y \
+    texlive-extra-utils
+
 # RUN npm link jsdom

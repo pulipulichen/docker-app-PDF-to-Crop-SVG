@@ -62,17 +62,19 @@ let main = async function () {
 
     // await ShellExec(`inkscape -g --verb=FitCanvasToDrawing --verb=FileSave --verb=FileQuit "${cropSVGfile}"`)
 
-    await ShellExec(`rm -f "${cropPDFfile}"`)
-
     // =================================================================
 
     let cropPNGfileTemp = dirname + '/' + filenameNoExt + '-crop-temp.png'
     let cropPNGfile = dirname + '/' + filenameNoExt + '-crop.png'
-    await ShellExec(`inkscape --export-png="${cropPNGfileTemp}" "${cropSVGfile}" --export-dpi=300`)
+    await ShellExec(`pdftoppm -png -r 300 "${cropPDFfile}" "${cropPNGfileTemp}"`)
 
     await ShellExec(`convert "${cropPNGfileTemp}" -alpha set -bordercolor white -border 1 -fill none -fuzz 5% -draw "color 0,0 floodfill" -shave 1x1 -fuzz 5% -trim +repage "${cropPNGfile}"`)
     
     fs.unlinkSync(cropPNGfileTemp)
+    fs.unlinkSync(cropPDFfile)
+
+    // await ShellExec(`rm -f "${cropPDFfile}"`)
+
 
     // =================================================================
 

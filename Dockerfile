@@ -29,7 +29,10 @@ CMD ["bash"]
 RUN apt-get install -y \
     imagemagick
 
-COPY ./docker-build/policy.xml /etc/ImageMagick-6/
+RUN apt-get install -y \
+    poppler-utils
+
+# COPY ./docker-build/policy.xml /etc/ImageMagick-6/
 
 COPY package.json /
 RUN npm install

@@ -64,11 +64,33 @@ let main = async function () {
 
     await ShellExec(`rm -f "${cropPDFfile}"`)
 
+    // =================================================================
+
     let cropPNGfileTemp = dirname + '/' + filenameNoExt + '-crop-temp.png'
     let cropPNGfile = dirname + '/' + filenameNoExt + '-crop.png'
     await ShellExec(`inkscape --export-png="${cropPNGfileTemp}" "${cropSVGfile}" --export-dpi=300`)
-    await ShellExec(`convert "${cropPNGfileTemp}" -trim +repage "${cropPNGfile}"`)
+
+
+
+    let channels = '0'
+    if (isJPG === false) {
+      channels = await ShellExec(`convert "${file}" -channel a -separate -format "%[fx:mean]" info:`)
+    }
+    else {
+      channels = '1'
+    }
+
+    if (channels !== '1') {
+      // await ShellExec(`convert "${file}" -alpha set -bordercolor transparent -border 1 -fill none -fuzz 3% -draw "color 0,0 floodfill" -shave 1x1 -trim +repage "${path.resolve(dirname, filenameNoExt + '-cropped' +ext)}"`)
+      await ShellExec(`convert "${cropPNGfileTemp}" -trim +repage "${cropPNGfile}"`)
+    }
+    else {
+      await ShellExec(`convert "${cropPNGfileTemp}" -alpha set -bordercolor white -border 1 -fill none -fuzz 5% -draw "color 0,0 floodfill" -shave 1x1 -fuzz 5% -trim +repage "${cropPNGfile}"`)
+    }
+    
     fs.unlinkSync(cropPNGfileTemp)
+
+    // =================================================================
 
     let cropEMFfile = dirname + '/' + filenameNoExt + '-crop.emf'
     await ShellExec(`inkscape --export-emf="${cropEMFfile}" "${cropSVGfile}"`)

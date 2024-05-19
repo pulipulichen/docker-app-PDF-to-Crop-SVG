@@ -73,12 +73,7 @@ let main = async function () {
 
 
     let channels = '0'
-    if (isJPG === false) {
-      channels = await ShellExec(`convert "${file}" -channel a -separate -format "%[fx:mean]" info:`)
-    }
-    else {
-      channels = '1'
-    }
+    channels = await ShellExec(`convert "${file}" -channel a -separate -format "%[fx:mean]" info:`)
 
     if (channels !== '1') {
       // await ShellExec(`convert "${file}" -alpha set -bordercolor transparent -border 1 -fill none -fuzz 3% -draw "color 0,0 floodfill" -shave 1x1 -trim +repage "${path.resolve(dirname, filenameNoExt + '-cropped' +ext)}"`)

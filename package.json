@@ -9,16 +9,25 @@
     "d0.build": "docker-compose build",
     "d1.bash": "docker-compose run app bash",
     "d2.up": "docker-compose up",
-    "update": "node update.js"
+    "update": "node update.js",
+    "tag": "./build/tag.sh"
   },
   "repository": {
     "type": "git",
     "url": "git+https://pulipuli.chen@gmail.com@github.com/pulipulichen/docker-app-PDF-to-Crop-SVG.git"
   },
   "keywords": [
-    "PWA"
+    "Docker-APP",
+    "Inkscape",
+    "ImageMagick"
   ],
-  "author": "Pulipuli Chen",
+  
+  "author": {
+    "name": "Yung-Ting Chen",
+    "email": "blog@pulipuli.info",
+    "orcid": "https://orcid.org/0000-0003-3751-610X",
+    "url": "https://blog.pulipuli.info"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/pulipulichen/docker-app-PDF-to-Crop-SVG/issues"

@@ -70,18 +70,7 @@ let main = async function () {
     let cropPNGfile = dirname + '/' + filenameNoExt + '-crop.png'
     await ShellExec(`inkscape --export-png="${cropPNGfileTemp}" "${cropSVGfile}" --export-dpi=300`)
 
-
-
-    let channels = '0'
-    channels = await ShellExec(`convert "${cropPNGfileTemp}" -channel a -separate -format "%[fx:mean]" info:`)
-
-    if (channels !== '1') {
-      // await ShellExec(`convert "${file}" -alpha set -bordercolor transparent -border 1 -fill none -fuzz 3% -draw "color 0,0 floodfill" -shave 1x1 -trim +repage "${path.resolve(dirname, filenameNoExt + '-cropped' +ext)}"`)
-      await ShellExec(`convert "${cropPNGfileTemp}" -trim +repage "${cropPNGfile}"`)
-    }
-    else {
-      await ShellExec(`convert "${cropPNGfileTemp}" -alpha set -bordercolor white -border 1 -fill none -fuzz 5% -draw "color 0,0 floodfill" -shave 1x1 -fuzz 5% -trim +repage "${cropPNGfile}"`)
-    }
+    await ShellExec(`convert "${cropPNGfileTemp}" -alpha set -bordercolor white -border 1 -fill none -fuzz 5% -draw "color 0,0 floodfill" -shave 1x1 -fuzz 5% -trim +repage "${cropPNGfile}"`)
     
     fs.unlinkSync(cropPNGfileTemp)
 

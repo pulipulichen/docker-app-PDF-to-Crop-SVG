@@ -29,5 +29,7 @@ CMD ["bash"]
 RUN apt-get install -y \
     imagemagick
 
+COPY ./docker-build/policy.xml /etc/ImageMagick-6/
+
 COPY package.json /
 RUN npm install

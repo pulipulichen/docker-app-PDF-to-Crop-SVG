@@ -9,3 +9,6 @@ title: "docker-app-PDF-to-Crop-SVG"
 license: "MIT"
 repository-code: "https://github.com/pulipulichen/docker-app-PDF-to-Crop-SVG"
 abstract: "Trim an image."
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.11216922

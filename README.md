@@ -1,8 +1,23 @@
-# docker-app-PDF-to-Crop-SVG
+[![DOI](https://zenodo.org/badge/601313642.svg)](https://zenodo.org/doi/10.5281/zenodo.11216922)
+
+# docker-app-PDF-to-Crop-SVG: 將PDF轉換成SVG
+
 A docker app to convert PDF to a cropped SVG.
+
+將PDF檔案轉換成SVG、解析度300 DPI的PNG圖片檔案，並且裁除多餘空白。
+
+![](https://blogger.googleusercontent.com/img/a/AVvXsEghVYNApvlGt4JVhDc5XxNuNdQXarx28QjyvjLsOccmQSD6UMK4I5akmzAKEUuYVbN_-5CCVMKg9HiMjBxR5LnCT7wDj80FunqRnZpkLkfAyOLdF9ECDMF3AGs0iKKhtKqrW3f6o9S1gm64__JNh6GEuIKL6QVpGamMMq5xBOEqu9Y48hdWpn9zTQ)
+
+# Download
 
 - For Windows: https://pulipulichen.github.io/docker-app-PDF-to-Crop-SVG/bin/pdf-to-svg.exe
 - For Linux and Mac OS: https://pulipulichen.github.io/docker-app-PDF-to-Crop-SVG/bin/pdf-to-svg.sh
+
+# Article
+
+- [如何將PDF轉換成SVG向量圖？ / How to Convert a PDF Into Vector Graphic Images like SVG?](https://blog.pulipuli.info/2024/02/pdfsvg-how-to-convert-a-pdf-into-vector-graphic-images-like-svg.html)
+
+# Citation
 
 ----
 

@@ -33,6 +33,7 @@
     "url": "https://github.com/pulipulichen/docker-app-PDF-to-Crop-SVG/issues"
   },
   "homepage": "https://github.com/pulipulichen/docker-app-PDF-to-Crop-SVG#readme",
+  "doi": "10.5281/zenodo.11216922",
   "dependencies": {
     "jquery": "3.6.3",
     "jsdom": "21.1.0"

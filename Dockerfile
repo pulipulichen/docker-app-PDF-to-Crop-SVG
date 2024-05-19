@@ -32,6 +32,9 @@ RUN apt-get install -y \
 RUN apt-get install -y \
     poppler-utils
 
+RUN apt-get install -y \
+    pdftk
+
 # COPY ./docker-build/policy.xml /etc/ImageMagick-6/
 
 COPY package.json /

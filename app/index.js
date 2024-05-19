@@ -49,7 +49,7 @@ let main = async function () {
 
     let firstPDFfile = dirname + '/' + filenameNoExt + '-first.pdf'
     let cropPDFfile = dirname + '/' + filenameNoExt + '-crop.pdf'
-    await ShellExec(`pdftk "${file}" cat 1 output ${firstPDFfile}`)
+    await ShellExec(`pdftk "${file}" cat 1 output "${firstPDFfile}"`)
     await ShellExec(`pdfcrop "${firstPDFfile}" "${cropPDFfile}"`)
 
     fs.unlinkSync(firstPDFfile)

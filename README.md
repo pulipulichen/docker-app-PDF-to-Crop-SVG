@@ -13,6 +13,10 @@ This is a Docker app designed to convert PDF files into SVG and 300 DPI PNG imag
 - For Windows: https://pulipulichen.github.io/docker-app-PDF-to-Crop-SVG/bin/pdf-to-svg.exe
 - For Linux and Mac OS: https://pulipulichen.github.io/docker-app-PDF-to-Crop-SVG/bin/pdf-to-svg.sh
 
+# Online Tool
+
+- Colab: https://colab.research.google.com/drive/1QCoI7jq8OPvIoNfBItxD6w_gW7ab3jAT?usp=sharing
+
 # Article
 
 - [如何將PDF轉換成SVG向量圖？ / How to Convert a PDF Into Vector Graphic Images like SVG?](https://blog.pulipuli.info/2024/02/pdfsvg-how-to-convert-a-pdf-into-vector-graphic-images-like-svg.html)
@@ -27,9 +31,11 @@ This is a Docker app designed to convert PDF files into SVG and 300 DPI PNG imag
 
 Chen, Y.-T. (2024). *Docker-app-PDF-to-Crop-SVG* (20240519.224311) [Computer software]. Zenodo. [https://doi.org/10.5281/ZENODO.11216922](https://doi.org/10.5281/ZENODO.11216922)
 
+
 ----
+
+# Draft
 
 - https://pulipulichen.github.io/docker-app-PDF-to-Crop-SVG/bin/pdf-to-svg.exe
 - https://pulipulichen.github.io/docker-app-PDF-to-Crop-SVG/example%20folder/2023.02.12%20%E6%A8%A1%E5%9E%8B%E6%9E%B6%E6%A7%8B%E5%9C%96%2BFSB%E9%97%9C%E9%8D%B5%E5%AD%97%E6%8A%BD%E5%8F%96%20a.pdf
 
-- Colab: https://colab.research.google.com/drive/1QCoI7jq8OPvIoNfBItxD6w_gW7ab3jAT?usp=sharing

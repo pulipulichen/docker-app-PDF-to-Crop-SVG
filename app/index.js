@@ -88,6 +88,14 @@ let main = async function () {
 
     let cropEMFfile = dirname + '/' + filenameNoExt + '-crop.emf'
     await ShellExec(`inkscape --export-emf="${cropEMFfile}" "${cropSVGfile}"`)
+
+
+    // =================================================================
+
+    let cropOutFile = dirname + '/' + filenameNoExt + '-crop_out.svg'
+    if (fs.existsSync(cropOutFile)) {
+      fs.unlinkSync(cropOutFile)
+    }
   }
 }
 

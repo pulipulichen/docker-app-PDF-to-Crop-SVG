@@ -35,7 +35,7 @@ RUN apt-get install -y \
 RUN apt-get install -y \
     pdftk
 
-# COPY ./docker-build/policy.xml /etc/ImageMagick-6/
+COPY ./docker-build/policy.xml /etc/ImageMagick-6/
 
 COPY package.json /
 RUN npm install

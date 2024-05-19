@@ -54,6 +54,7 @@ let main = async function () {
     await ShellExec(`pdftk "${firstTempPDFfile}" cat 1 output "${firstPDFfile}"`)
     await ShellExec(`pdfcrop "${firstPDFfile}" "${cropPDFfile}"`)
 
+    fs.unlinkSync(firstTempPDFfile)
     fs.unlinkSync(firstPDFfile)
 
     dirname = '/output'

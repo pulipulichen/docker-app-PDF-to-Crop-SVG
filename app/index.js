@@ -47,8 +47,12 @@ let main = async function () {
     await ShellExec(`inkscape --version`)
 
 
+    let firstPDFfile = dirname + '/' + filenameNoExt + '-first.pdf'
     let cropPDFfile = dirname + '/' + filenameNoExt + '-crop.pdf'
-    await ShellExec(`pdfcrop "${file}" "${cropPDFfile}"`)
+    await ShellExec(`pdftk "${file}" cat 1 output ${firstPDFfile}`)
+    await ShellExec(`pdfcrop "${firstPDFfile}" "${cropPDFfile}"`)
+
+    fs.unlinkSync(firstPDFfile)
 
     dirname = '/output'
     let cropSVGfile = dirname + '/' + filenameNoExt + '-crop.svg'
@@ -68,7 +72,7 @@ let main = async function () {
     let cropPNGfile = dirname + '/' + filenameNoExt + '-crop.png'
     await ShellExec(`pdftoppm -png -r 300 "${cropPDFfile}" "${cropPNGfileTemp}"`)
 
-    await ShellExec(`convert "${cropPNGfileTemp}" -alpha set -bordercolor white -border 1 -fill none -fuzz 5% -draw "color 0,0 floodfill" -shave 1x1 -fuzz 5% -trim +repage "${cropPNGfile}"`)
+    await ShellExec(`convert "${cropPNGfileTemp}-1.png" -alpha set -bordercolor white -border 1 -fill none -fuzz 5% -draw "color 0,0 floodfill" -shave 1x1 -fuzz 5% -trim +repage "${cropPNGfile}"`)
     
     fs.unlinkSync(cropPNGfileTemp)
     fs.unlinkSync(cropPDFfile)

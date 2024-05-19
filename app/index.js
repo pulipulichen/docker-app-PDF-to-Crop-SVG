@@ -78,7 +78,7 @@ let main = async function () {
     fs.renameSync(cropPNGfileTemp + '-1.png', cropPNGfile)
     // await ShellExec(`convert "${cropPNGfileTemp}-1.png" -alpha set -bordercolor white -border 1 -fill none -fuzz 5% -draw "color 0,0 floodfill" -shave 1x1 -fuzz 5% -trim +repage "${cropPNGfile}"`)
     
-    fs.unlinkSync(cropPNGfileTemp + '-1.png')
+    // fs.unlinkSync(cropPNGfileTemp + '-1.png')
     fs.unlinkSync(cropPDFfile)
 
     // await ShellExec(`rm -f "${cropPDFfile}"`)

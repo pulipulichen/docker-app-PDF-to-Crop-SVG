@@ -26,5 +26,8 @@ WORKDIR /
 
 CMD ["bash"]
 
+RUN apt-get install -y \
+    imagemagick
+
 COPY package.json /
 RUN npm install

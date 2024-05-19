@@ -64,8 +64,11 @@ let main = async function () {
 
     await ShellExec(`rm -f "${cropPDFfile}"`)
 
+    let cropPNGfileTemp = dirname + '/' + filenameNoExt + '-crop-temp.png'
     let cropPNGfile = dirname + '/' + filenameNoExt + '-crop.png'
-    await ShellExec(`inkscape --export-png="${cropPNGfile}" "${cropSVGfile}" --export-dpi=300`)
+    await ShellExec(`inkscape --export-png="${cropPNGfileTemp}" "${cropSVGfile}" --export-dpi=300`)
+    await ShellExec(`convert "${cropPNGfileTemp}" -trim +repage "${cropPNGfile}"`)
+    fs.unlinkSync(cropPNGfileTemp)
 
     let cropEMFfile = dirname + '/' + filenameNoExt + '-crop.emf'
     await ShellExec(`inkscape --export-emf="${cropEMFfile}" "${cropSVGfile}"`)

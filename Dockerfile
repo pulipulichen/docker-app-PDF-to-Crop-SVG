@@ -35,6 +35,8 @@ RUN apt-get install -y \
 RUN apt-get install -y \
     pdftk
 
+RUN apt-get install ghostscript -y
+
 COPY ./docker-build/policy.xml /etc/ImageMagick-6/
 
 COPY package.json /

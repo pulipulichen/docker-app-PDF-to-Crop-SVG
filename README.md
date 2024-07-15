@@ -4,7 +4,7 @@
 
 This is a Docker app designed to convert PDF files into SVG and 300 DPI PNG image files, and trim any excess white space.
 
-這是一個Docker APP。它的用途是將PDF檔案轉換成SVG、解析度300 DPI的PNG圖片檔案，並且裁除多餘空白。
+這一個Docker APP的用途是將PDF檔案轉換成SVG、解析度300 DPI的PNG圖片檔案，並且裁除多餘空白。
 
 ![](https://blogger.googleusercontent.com/img/a/AVvXsEghVYNApvlGt4JVhDc5XxNuNdQXarx28QjyvjLsOccmQSD6UMK4I5akmzAKEUuYVbN_-5CCVMKg9HiMjBxR5LnCT7wDj80FunqRnZpkLkfAyOLdF9ECDMF3AGs0iKKhtKqrW3f6o9S1gm64__JNh6GEuIKL6QVpGamMMq5xBOEqu9Y48hdWpn9zTQ)
 
@@ -30,7 +30,6 @@ This is a Docker app designed to convert PDF files into SVG and 300 DPI PNG imag
 # Citation
 
 Chen, Y.-T. (2024). *Docker-app-PDF-to-Crop-SVG* (20240519.224311) [Computer software]. Zenodo. [https://doi.org/10.5281/ZENODO.11216922](https://doi.org/10.5281/ZENODO.11216922)
-
 
 ----
 

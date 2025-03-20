@@ -1,5 +1,6 @@
 #include <MsgBoxConstants.au3>
 #include <FileConstants.au3>
+#include <Array.au3>  ; Include this if you want to use _ArrayToString
 
 Global $sPROJECT_NAME = "docker-app-PDF-to-Crop-SVG"
 

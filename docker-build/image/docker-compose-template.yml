@@ -3,6 +3,7 @@ services:
   app:
     image: pudding/docker-app:docker-app-pdf-to-crop-svg-app-20240519.233818
     tty: true
+    user: "${UID}:${GID}"
     command: node /app/index.js "/input/__INPUT__"
     environment:
       - CONTAINER_NAME=docker-app-pdf-to-crop-svg-app

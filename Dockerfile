@@ -43,6 +43,8 @@ COPY ./docker-build/policy.xml /etc/ImageMagick-6/
 RUN groupadd -g 1000 appgroup \
     && useradd -m -u 1000 -g appgroup -s /bin/bash appuser
 
+WORKDIR /tmp
+
 # ==============
 
 COPY package.json /

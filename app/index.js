@@ -47,8 +47,8 @@ let main = async function () {
     await ShellExec(`inkscape --version`)
 
 
-    let firstTempPDFfile = '/tmp/first-temp.pdf'
-    let firstPDFfile = '/tmp/first.pdf'
+    let firstTempPDFfile = dirname + '/first-temp.pdf'
+    let firstPDFfile = dirname + '/first.pdf'
     let cropPDFfile = dirname + '/' + filenameNoExt + '-crop.pdf'
     await ShellExec(`cp "${file}" "${firstTempPDFfile}"`)
     await ShellExec(`pdftk "${firstTempPDFfile}" cat 1 output "${firstPDFfile}"`)

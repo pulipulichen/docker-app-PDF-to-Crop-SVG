@@ -39,5 +39,11 @@ RUN apt-get install ghostscript -y
 
 COPY ./docker-build/policy.xml /etc/ImageMagick-6/
 
+
+RUN groupadd -g 1000 appgroup \
+    && useradd -m -u 1000 -g appgroup -s /bin/bash appuser
+
+# ==============
+
 COPY package.json /
 RUN npm install

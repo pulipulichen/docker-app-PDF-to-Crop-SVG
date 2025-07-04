@@ -4,10 +4,10 @@
   "description": "Trim an image.",
   "main": "index.js",
   "scripts": {
-    "commit-docker-image": "sudo docker compose build; bash ./docker-build/image/commit-docker-image.sh",
-    "d0.build": "./docker-build/build.sh",
-    "d1.bash": "./docker-build/bash.sh",
-    "d2.up": "./docker-build/up.sh",
+    "commit-docker-image": "./docker-scripts/build.sh; bash ./docker-build/image/commit-docker-image.sh",
+    "d0.build": "./docker-scripts/build.sh",
+    "d1.bash": "./docker-scripts/bash.sh",
+    "d2.up": "./docker-scripts/up.sh",
     "update": "node update.js",
     "tag": "./build/tag.sh"
   },

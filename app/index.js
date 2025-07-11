@@ -73,9 +73,12 @@ let main = async function () {
 
     let cropPNGfileTemp = dirname + '/' + filenameNoExt + '-crop-temp.png'
     let cropPNGfile = dirname + '/' + filenameNoExt + '-crop.png'
+    let cropTransPNGfile = dirname + '/' + filenameNoExt + '-crop-trans.png'
     await ShellExec(`pdftoppm -png -r 300 "${cropPDFfile}" "${cropPNGfileTemp}"`)
 
     fs.renameSync(cropPNGfileTemp + '-1.png', cropPNGfile)
+
+    await ShellExec(`convert "${cropPNGfile}" -alpha set -bordercolor white -border 1 -fill none -fuzz 2% -draw "color 0,0 floodfill" -shave 1x1 -fuzz 5% -trim +repage "${cropTransPNGfile}"`)
     // await ShellExec(`convert "${cropPNGfileTemp}-1.png" -alpha set -bordercolor white -border 1 -fill none -fuzz 5% -draw "color 0,0 floodfill" -shave 1x1 -fuzz 5% -trim +repage "${cropPNGfile}"`)
     
     // fs.unlinkSync(cropPNGfileTemp + '-1.png')
